@@ -1,0 +1,35 @@
+/* Set the size of the body element */
+h1 {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;
+}
+
+body {
+    width: 400px;
+    height: 300px;
+    background-color: #b4bcb4;
+}
+
+
+/* Style the header row of the table */
+table tr:first-child {
+    height: 30px;
+    margin: 0px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-color: #2f403a;
+    color: white;
+}
+
+/* Style the cells in the table */
+table td {
+    background-color: #d5d5d4;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    width: 120px;
+    padding: 5px;
+    text-align: center;
+}
+
+.table-centre {
+    margin-left: auto;
+    margin-right: auto;
+}
