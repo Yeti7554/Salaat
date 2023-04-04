@@ -4,13 +4,44 @@
   <meta charset="utf-8">
   <title>Prayer Times</title>
   <link rel="stylesheet" href="../style.css">
+
+  <script>
+
+    let choice=""
+
+    // Function to load saved option from local storage
+		function loadOption() {
+			var selectedOption = localStorage.getItem("selectedOption");
+			if (selectedOption) {
+				document.getElementById("selectBox").value = selectedOption;
+      choice=parseInt(selectedOption);
+			}
+		}
+
+		// Function to save selected option to local storage
+		function saveOption() {
+			var selectBox = document.getElementById("selectBox");
+			var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+			localStorage.setItem("selectedOption", selectedValue);
+		}
+
+		
+	</script>
+
 </head>
-<body>
- 
+<h2 class="my-city">Choose your calculation method</h1>
+<body onload="loadOption()"">
+  <select id="selectBox" onchange="saveOption()">
+    <option value="0">Shia Ithna-Ansari</option>
+		<option value="1">University of Islamic Sciences, Karachi</option>
+		<option value="2">Islamic Society of North America</option>
+		<option value="3">Muslim World League</option>
+		<option value="4">Umm Al-Qura University, Makkah</option>
+		<option value="5">Egyptian General Authority of Survey</option>
+		<option value="7">Institute of Geophysics, University of Tehran</option>
+	</select>
 
   <h3 class="version"> <a href="../index.html" class="link">home</a></h3>
   <h3 class="version"> ver 0.1</h3>
-
-  <script src="./script.js"></script>
 </body>
 </html>

@@ -1,5 +1,5 @@
 async function getPrayerTimes() {
-  const url = 'https://api.aladhan.com/v1/timingsByCity?city=Edmonton&country=Canada&method=2';
+  const url = `https://api.aladhan.com/v1/timingsByCity?city=Edmonton&country=Canada&method=1`;
   
   try {
     const response = await fetch(url);
@@ -26,3 +26,4 @@ async function getPrayerTimes() {
 }
 
 getPrayerTimes();
+
