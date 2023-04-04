@@ -1,15 +1,35 @@
 /* Set the size of the body element */
-h1 {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    text-align: center;
-}
 
-body {
+html {
     width: 400px;
     height: 300px;
     background-color: #b4bcb4;
 }
 
+
+h1 {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;
+    color: #2f403a;
+    margin-bottom: 8px;
+}
+
+.my-city {
+    color: #2f403a;
+    font-size: 20px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+.prayer-name {
+    border-top-left-radius: 5px;
+}
+
+.time {
+    border-top-right-radius: 5px;
+}
 
 /* Style the header row of the table */
 table tr:first-child {
@@ -33,3 +53,16 @@ table td {
     margin-left: auto;
     margin-right: auto;
 }
+
+.version {
+    color: #2f403a;
+    font-size: 12px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: right;
+}
+
+.link {
+    text-decoration: none;
+    color: #2f403a;
+}
+
