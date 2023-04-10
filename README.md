@@ -2,3 +2,6 @@ The goal of this chrome extension is to be able to quickly view Salat times and 
 
 V0.1
     Salat times for Edmonton, AB only
+
+V0.2
+    Salat times for anywhere in Canada (note: cities with two words might encounter errors)
