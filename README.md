@@ -6,5 +6,5 @@ V0.1
 V0.2
     Salat times for anywhere in Canada (note: cities with two words might encounter errors)
 
-V1.0
+V0.3
     Salat times for anywhere in Canada (note: cities with two words might encounter errors), with calculation method selectable

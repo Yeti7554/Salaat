@@ -7,8 +7,6 @@ let userCountryFormatted;
 const myCityDiv = document.querySelector(".my-city");
 const calcMethod = document.querySelector(".calc-text");
 
-
-  
 function getPrayerTimes() {
   const url = `https://api.aladhan.com/v1/timingsByCity?city=${userCityFormatted}&country=${userCountryFormatted}&method=${selectedValue}`;
   console.log(url);
@@ -33,7 +31,6 @@ function getPrayerTimes() {
     })
     .catch(error => console.error(error));
 }
-
 
 function getUserCity() {
   return new Promise((resolve, reject) => {
@@ -109,7 +106,7 @@ function setupSelectBox() {
     calcMethod.textContent = `Calculation Method: ${storedMethod}`;
   } else {
     // Use default values if no values are stored
-    window.selectedValue = 0; // Change this to whatever default value you want
+    window.selectedValue = 1; // Change this to whatever default value you want
     window.selectedMethod = "Select a method"; // Change this to whatever default value you want
   }
 }
@@ -138,5 +135,3 @@ getUserCity()
   .catch((error) => {
     console.error("Error getting user city:", error);
   });
-
-  
