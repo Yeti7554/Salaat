@@ -10,12 +10,20 @@ html {
 h1 {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-align: center;
-    color: #2f403a;
+    color: #006500;
+    margin-bottom: 8px;
+}
+
+h3 {
+    font-size: 20px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;
+    color: #006500;
     margin-bottom: 8px;
 }
 
 .my-city {
-    color: #2f403a;
+    color: #650000;
     font-size: 20px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-align: center;
@@ -36,13 +44,13 @@ table tr:first-child {
     height: 30px;
     margin: 0px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    background-color: #222F22;
+    background-color: #009000;
     color: white;
 }
 
 /* Style the cells in the table */
 table td {
-    background-color: #d5d5d4;
+    background-color: #f2f2f2;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     width: 120px;
     padding: 5px;
@@ -55,7 +63,7 @@ table td {
 }
 
 .version {
-    color: #2f403a;
+    color: #006500;
     font-size: 12px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-align: right;
@@ -63,6 +71,21 @@ table td {
 
 .link {
     text-decoration: none;
-    color: #2f403a;
+    color: #006500;
 }
 
+.select {
+    padding-top: 17.5%;
+    padding-bottom: 17.5%;
+    justify-content: center;
+    display: flex;
+    width: 100%;
+}
+
+.calc-text {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 10px;
+    color: #006500;
+    text-align: center;
+
+}
