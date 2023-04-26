@@ -3,7 +3,8 @@
 html {
     width: 400px;
     height: 300px;
-    background-color: #FCFDFD;
+    background-color: #f6fff2
+    ;
 }
 
 
@@ -75,6 +76,8 @@ table td {
 }
 
 .select {
+    display: flex;
+    flex-direction: column;
     padding-top: 17.5%;
     padding-bottom: 17.5%;
     justify-content: center;
