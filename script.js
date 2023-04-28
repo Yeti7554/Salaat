@@ -80,6 +80,8 @@ function setupSelectBox() {
   // Check if the selectBox element exists
   var selectBox = document.getElementById("selectBox");
   if (selectBox !== null) {
+    selectBox.options[0].text = "Choose here";
+    selectBox.options[0].style.textAlign = "center"; 
     // Add an event listener to the dropdown menu
     selectBox.addEventListener("change", function() {
       // Get the selected value and method
