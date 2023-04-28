@@ -107,7 +107,8 @@ function setupSelectBox() {
   } else {
     // Use default values if no values are stored
     window.selectedValue = 1; // Change this to whatever default value you want
-    window.selectedMethod = "Select a method"; // Change this to whatever default value you want
+    window.selectedMethod = "Select a method";
+    calcMethod.textContent = `Select a calculation method`; // Change this to whatever default value you want
   }
 }
 

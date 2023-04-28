@@ -3,15 +3,13 @@
 html {
     width: 400px;
     height: 300px;
-    background-color: #f6fff2
-    ;
+    background-color: #FFFCF2;
 }
-
 
 h1 {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-align: center;
-    color: #006500;
+    color: #50CAAD;
     margin-bottom: 8px;
 }
 
@@ -19,12 +17,13 @@ h3 {
     font-size: 20px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-align: center;
-    color: #006500;
+    color: #50CAAD;
     margin-bottom: 8px;
 }
 
 .my-city {
-    color: #650000;
+    color: #7371CB
+    ;
     font-size: 20px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-align: center;
@@ -45,7 +44,7 @@ table tr:first-child {
     height: 30px;
     margin: 0px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    background-color: #009000;
+    background-color: #50CAAD;
     color: white;
 }
 
@@ -64,7 +63,8 @@ table td {
 }
 
 .version {
-    color: #006500;
+    color: #7371CB
+    ;
     font-size: 12px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-align: right;
@@ -72,7 +72,7 @@ table td {
 
 .link {
     text-decoration: none;
-    color: #006500;
+    color: #7371CB;
 }
 
 .select {
@@ -88,7 +88,7 @@ table td {
 .calc-text {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 10px;
-    color: #006500;
+    color: #7371CB;
     text-align: center;
 
 }
