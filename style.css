@@ -1,9 +1,10 @@
 /* Set the size of the body element */
 
-html {
+body {
     width: 400px;
-    height: 320px;
+    height: 300px;
     background-color: #FFFCF2;
+    border-radius: 24px;
 }
 
 h1 {
@@ -78,8 +79,6 @@ table td {
 .select {
     display: flex;
     flex-direction: column;
-    padding-top: 17.5%;
-    padding-bottom: 17.5%;
     justify-content: center;
     display: flex;
     width: 100%;
@@ -98,4 +97,32 @@ table td {
     flex-direction: row;
     margin-bottom: 10px;
     justify-content: space-between;
+    align-self: flex-end;
+}
+
+.logos {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 20%;
+    margin-bottom: 10%;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+}
+
+#selectBox {
+    width: 70%;
+    border-radius: 10px;
+    display: flex;
+    justify-self: center;
+}
+
+.select-box {
+    display: flex;
+    justify-content: center;
+    opacity: 40%;
 }
