@@ -10,6 +10,8 @@ V0.3
     Salat times for anywhere in Canada (note: cities with two words might encounter errors), with calculation method selectable
 
 V0.4
-    UI Updates
+    UI and colour palette updates
+
+V0.5
     Loading Screen
     Option to Donate
