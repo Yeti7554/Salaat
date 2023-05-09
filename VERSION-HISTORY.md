@@ -20,3 +20,4 @@ V0.6
     Sunrise timing added
     Islamic date added
     Updated navbar icon
+    Resolved "Throttled" issues with the geocode API

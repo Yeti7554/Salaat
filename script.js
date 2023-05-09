@@ -99,8 +99,14 @@ function setupSelectBox() {
 getUserLocation()
   .then((city) => {
     userArea = city;
-    userCityUpper = userArea.city;
-    userCountryUpper = userArea.country;
+    userCity = userArea.city;
+    userCityUpper = userCity.replace(/\b\w/g, function (char) {
+      return char.toUpperCase();
+    });
+    userCountry = userArea.country;
+    userCountryUpper = userCountry.replace(/\b\w/g, function (char) {
+      return char.toUpperCase();
+    });
     userCityFormatted = userCityUpper.replace(/ /g, '%20');
     userCountryFormatted = userCountryUpper.replace(/ /g, '%20');
     console.log("User city:", userCityUpper)
