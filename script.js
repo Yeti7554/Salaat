@@ -33,7 +33,7 @@ function getPrayerTimes() {
     .catch(error => console.error(error));
 }
 
-function getUserCity() {
+function getUserLocation() {
   return new Promise((resolve, reject) => {
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition(
@@ -43,7 +43,8 @@ function getUserCity() {
             .then((response) => response.json())
             .then((data) => {
               const city = data.city;
-              resolve(city);
+              const country = data.country;
+              resolve({ city, country });
             })
             .catch((error) => reject(error));
         },
@@ -55,27 +56,6 @@ function getUserCity() {
   });
 }
 
-function getUserCountry() {
-  return new Promise((resolve, reject) => {
-    if ("geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const { latitude, longitude } = position.coords;
-          fetch(`https://geocode.xyz/${latitude},${longitude}?json=1`)
-            .then((response) => response.json())
-            .then((data) => {
-              const country = data.country;
-              resolve(country);
-            })
-            .catch((error) => reject(error));
-        },
-        (error) => reject(error)
-      );
-    } else {
-      reject(new Error("Geolocation not available"));
-    }
-  });
-}
 
 function setupSelectBox() {
   // Check if the selectBox element exists
@@ -115,46 +95,19 @@ function setupSelectBox() {
   }
 }
 
-function getIslamicDateAndMonth() {
-  const url = `http://api.aladhan.com/v1/calendarByCity?city=${userCityFormatted}&country=${userCountryFormatted}&method=2`;
-  return fetch(url)
-    .then(function(response) {
-      return response.json();
-    })
-    .then(function(data) {
-      const today = new Date();
-      const hijriDateObject = data.data.find(function(day) {
-        const date = new Date(day.date.gregorian.year, day.date.gregorian.month - 1, day.date.gregorian.day);
-        return date.getTime() === today.getTime();
-      })?.date?.hijri;
-
-      if (!hijriDateObject) {
-        throw new Error('No data available for today.');
-      }
-
-      return `Islamic Date: ${hijriDateObject.date}, Islamic Month: ${hijriDateObject.month.en}`;
-    });
-}
-
 // Call the function to get the user's city and store it in a variable called userCity
-getUserCity()
+getUserLocation()
   .then((city) => {
-    userCity = city;
-    userCityUpper = userCity.charAt(0).toUpperCase() + userCity.slice(1);
+    userArea = city;
+    userCityUpper = userArea.city;
+    userCountryUpper = userArea.country;
     userCityFormatted = userCityUpper.replace(/ /g, '%20');
-    console.log("User city:", userCity);
+    userCountryFormatted = userCountryUpper.replace(/ /g, '%20');
+    console.log("User city:", userCityUpper)
+    console.log("User Country:", userCountryUpper);
+    myCityDiv.textContent = `${userCityUpper}, ${userCountryUpper}`;
     setupSelectBox();
     getPrayerTimes();
-    getUserCountry()
-      .then((country) => {
-        userCountry = country;
-        userCountryFormatted = userCountry.replace(/ /g, '%20');
-        console.log("User Country:", userCountry);
-        myCityDiv.textContent = `${userCityUpper}, ${userCountry}`;
-      })
-      .catch((error) => console.error(error));
-    getIslamicDateAndMonth();
-
   })
   .catch((error) => {
     console.error("Error getting user city:", error);
