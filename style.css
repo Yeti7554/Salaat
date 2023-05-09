@@ -92,6 +92,13 @@ table td {
 
 }
 
+.main {
+    border-radius: 5px;
+    background: rgba(80, 202, 173, 0.10);
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
 .footer {
     display: flex;
     flex-direction: row;
@@ -137,7 +144,7 @@ table td {
     font-weight: 500;
     border-radius: 15px;
     font-size: 14px;
-    height: 35px;
+    height: 34px;
     padding: 0px 15px;
     text-shadow: rgb(0 0 0 / 25%) 0px 3px 8px;
     background: #FEA380;
