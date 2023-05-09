@@ -100,11 +100,11 @@ getUserLocation()
   .then((city) => {
     userArea = city;
     userCity = userArea.city;
-    userCityUpper = userCity.replace(/\b\w/g, function (char) {
+    userCityUpper = userCity.toLowerCase().replace(/\b\w/g, function(char) {
       return char.toUpperCase();
     });
     userCountry = userArea.country;
-    userCountryUpper = userCountry.replace(/\b\w/g, function (char) {
+    userCountryUpper = userCountry.toLowerCase().replace(/\b\w/g, function (char) {
       return char.toUpperCase();
     });
     userCityFormatted = userCityUpper.replace(/ /g, '%20');
