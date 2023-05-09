@@ -15,3 +15,8 @@ V0.4
 V0.5
     Loading Screen
     Option to Donate
+
+V0.6
+    Sunrise timing added
+    Islamic date added
+    Updated navbar icon

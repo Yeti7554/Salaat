@@ -18,11 +18,12 @@ function getPrayerTimes() {
 
       const fajr = timings.Fajr;
       const dhuhr = timings.Dhuhr;
+      const sunrise = timings.Sunrise;
       const asr = timings.Asr;
       const maghrib = timings.Maghrib;
       const isha = timings.Isha;
 
-      const prayerTimes = [fajr, dhuhr, asr, maghrib, isha];
+      const prayerTimes = [fajr, sunrise, dhuhr, asr, maghrib, isha];
 
       const prayerTimeElements = document.querySelectorAll('table tr:not(:first-child) td:last-child');
       prayerTimeElements.forEach((element, index) => {
@@ -114,7 +115,26 @@ function setupSelectBox() {
   }
 }
 
+function getIslamicDateAndMonth() {
+  const url = `http://api.aladhan.com/v1/calendarByCity?city=${userCityFormatted}&country=${userCountryFormatted}&method=2`;
+  return fetch(url)
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(data) {
+      const today = new Date();
+      const hijriDateObject = data.data.find(function(day) {
+        const date = new Date(day.date.gregorian.year, day.date.gregorian.month - 1, day.date.gregorian.day);
+        return date.getTime() === today.getTime();
+      })?.date?.hijri;
 
+      if (!hijriDateObject) {
+        throw new Error('No data available for today.');
+      }
+
+      return `Islamic Date: ${hijriDateObject.date}, Islamic Month: ${hijriDateObject.month.en}`;
+    });
+}
 
 // Call the function to get the user's city and store it in a variable called userCity
 getUserCity()
@@ -133,6 +153,7 @@ getUserCity()
         myCityDiv.textContent = `${userCityUpper}, ${userCountry}`;
       })
       .catch((error) => console.error(error));
+    getIslamicDateAndMonth();
 
   })
   .catch((error) => {
