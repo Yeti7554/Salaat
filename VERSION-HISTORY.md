@@ -20,3 +20,6 @@ Option to Donate to support.
 Sunrise timing added.  
 Updated navbar icon.  
 Resolved "Throttled" issues with the geocode API.  
+
+## V0.6.1
+Fixed Error - App was stuck on loading.
