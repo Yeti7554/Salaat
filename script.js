@@ -7,6 +7,12 @@ let userCountryFormatted;
 const myCityDiv = document.querySelector(".my-city");
 const calcMethod = document.querySelector(".calc-text");
 
+function formatTime(timeString) {
+  const [hourString, minute] = timeString.split(":");
+  const hour = +hourString % 24;
+  return (hour % 12 || 12) + ":" + minute + (hour < 12 ? " AM" : " PM");
+}
+
 function getPrayerTimes() {
   const url = `https://api.aladhan.com/v1/timingsByCity?city=${userCityFormatted}&country=${userCountryFormatted}&method=${selectedValue}`;
   console.log(url);
@@ -16,12 +22,12 @@ function getPrayerTimes() {
     .then(data => {
       const timings = data.data.timings;
 
-      const fajr = timings.Fajr;
-      const dhuhr = timings.Dhuhr;
-      const sunrise = timings.Sunrise;
-      const asr = timings.Asr;
-      const maghrib = timings.Maghrib;
-      const isha = timings.Isha;
+      const fajr = formatTime(timings.Fajr);
+      const dhuhr = formatTime(timings.Dhuhr);
+      const sunrise = formatTime(timings.Sunrise);
+      const asr = formatTime(timings.Asr);
+      const maghrib = formatTime(timings.Maghrib);
+      const isha = formatTime(timings.Isha);
 
       const prayerTimes = [fajr, sunrise, dhuhr, asr, maghrib, isha];
 
