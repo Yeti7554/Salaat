@@ -96,25 +96,32 @@ function setupSelectBox() {
 }
 
 // Call the function to get the user's city and store it in a variable called userCity
-getUserLocation()
-  .then((city) => {
-    userArea = city;
-    userCity = userArea.city;
-    userCityUpper = userCity.toLowerCase().replace(/\b\w/g, function(char) {
-      return char.toUpperCase();
+function getUserLocationWithRetry() {
+  getUserLocation()
+    .then((city) => {
+      userArea = city;
+      userCity = userArea.city;
+      userCityUpper = userCity.toLowerCase().replace(/\b\w/g, function(char) {
+        return char.toUpperCase();
+      });
+      userCountry = userArea.country;
+      userCountryUpper = userCountry.toLowerCase().replace(/\b\w/g, function (char) {
+        return char.toUpperCase();
+      });
+      userCityFormatted = userCityUpper.replace(/ /g, '%20');
+      userCountryFormatted = userCountryUpper.replace(/ /g, '%20');
+      console.log("User city:", userCityUpper)
+      console.log("User Country:", userCountryUpper);
+      myCityDiv.textContent = `${userCityUpper}, ${userCountryUpper}`;
+      setupSelectBox();
+      getPrayerTimes();
+    })
+    .catch((error) => {
+      console.error("Error getting user city:", error);
+      setTimeout(() => {
+        location.reload();
+      }, 1100);
     });
-    userCountry = userArea.country;
-    userCountryUpper = userCountry.toLowerCase().replace(/\b\w/g, function (char) {
-      return char.toUpperCase();
-    });
-    userCityFormatted = userCityUpper.replace(/ /g, '%20');
-    userCountryFormatted = userCountryUpper.replace(/ /g, '%20');
-    console.log("User city:", userCityUpper)
-    console.log("User Country:", userCountryUpper);
-    myCityDiv.textContent = `${userCityUpper}, ${userCountryUpper}`;
-    setupSelectBox();
-    getPrayerTimes();
-  })
-  .catch((error) => {
-    console.error("Error getting user city:", error);
-  });
+}
+
+getUserLocationWithRetry();
