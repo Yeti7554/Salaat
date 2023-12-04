@@ -12,5 +12,7 @@ You can donate to support development on this chrome extension.
 
 We do not store your location or device information and our source code is available if you would like to ensure that we are using your data ethically.
 
+You can find the complete version history [HERE](https://github.com/Yeti7554/Salaat/blob/main/VERSION-HISTORY.md)
+
 Contact form:
 https://forms.gle/2ME4Aq1DxfaecRda6
