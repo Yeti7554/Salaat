@@ -23,3 +23,6 @@ Resolved "Throttled" issues with the geocode API.
 
 ## V0.6.1
 Fixed Error - App was stuck on loading.
+
+## V0.7
+Added AM / PM display rather than 24 hour
