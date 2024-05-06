@@ -5,13 +5,21 @@ let userCityFormatted;
 let userCountryFormatted;
 const myCityDiv = document.querySelector(".my-city");
 const calcMethod = document.querySelector(".calc-text");
+var fajr;
+var dhuhr;
+var asr;
+var maghrib;
+var isha;
+var nextPrayer;
 
+// Function to format time to HH:MM AM/PM format
 function formatTime(timeString) {
     const [hourString, minute] = timeString.split(":");
     const hour = +hourString % 24;
     return (hour % 12 || 12) + ":" + minute + (hour < 12 ? " AM" : " PM");
 }
 
+// Function to get prayer times from API
 async function getPrayerTimes() {
     const currentDate = new Date().toDateString();
     const cacheKey = `${currentDate}-${selectedValue}`;
@@ -27,22 +35,98 @@ async function getPrayerTimes() {
     const timings = data.data.timings;
     populatePrayerTimes(timings);
     localStorage.setItem(cacheKey, JSON.stringify(timings));
+
+    // Find the next closest prayer after getting prayer times
+    findNextPrayer();
 }
 
+// Function to populate prayer times on the page
 function populatePrayerTimes(timings) {
-    const fajr = formatTime(timings.Fajr);
-    const dhuhr = formatTime(timings.Dhuhr);
-    const sunrise = formatTime(timings.Sunrise);
-    const asr = formatTime(timings.Asr);
-    const maghrib = formatTime(timings.Maghrib);
-    const isha = formatTime(timings.Isha);
-    const prayerTimes = [fajr, sunrise, dhuhr, asr, maghrib, isha];
-    const prayerTimeElements = document.querySelectorAll('table tr:not(:first-child) td:last-child');
-    prayerTimeElements.forEach((element, index) => {
-        element.textContent = prayerTimes[index];
-    });
+    fajr = formatTime(timings.Fajr);
+    dhuhr = formatTime(timings.Dhuhr);
+    asr = formatTime(timings.Asr);
+    maghrib = formatTime(timings.Maghrib);
+    isha = formatTime(timings.Isha);
+    sunrise = formatTime(timings.Sunrise);
+
+    // Populate prayer times table
+    document.getElementById('fajr').textContent ="Fajr: " + fajr;
+    document.getElementById('sunrise').textContent ="Sunrise: " + sunrise;
+    document.getElementById('dhuhr').textContent ="Dhuhr: " + dhuhr;
+    document.getElementById('asr').textContent ="Asr: " + asr;
+    document.getElementById('maghrib').textContent ="Maghrib: " + maghrib;
+    document.getElementById('isha').textContent ="Isha: " + isha;
 }
 
+
+
+// Function to find the next closest prayer time after the current time
+function findNextPrayer() {
+    var currentTimeInMinutes = convertTimeToMinutes(getCurrentTime());
+    var prayerTimes = [
+        { name: 'Fajr', time: fajr },
+        { name: 'Dhuhr', time: dhuhr },
+        { name: 'Asr', time: asr },
+        { name: 'Maghrib', time: maghrib },
+        { name: 'Isha', time: isha }
+    ];
+    var nextPrayerInfo = null;
+
+    // Iterate through prayer times array
+    for (var i = 0; i < prayerTimes.length; i++) {
+        var prayerTimeInMinutes = convertTimeToMinutes(prayerTimes[i].time);
+
+        // Check if the current prayer time is greater than the current time
+        if (prayerTimeInMinutes > currentTimeInMinutes) {
+            nextPrayerInfo = prayerTimes[i];
+            break;
+        }
+    }
+
+    // Display next prayer in the "nextPrayer" div
+    if (nextPrayerInfo !== null) {
+        nextPrayer = nextPrayerInfo.time;
+        var nextPrayerName = nextPrayerInfo.name;
+        var nextPrayerDiv = document.querySelector('.nextPrayer');
+        var nextPrayerTimeDiv = document.querySelector('.nextPrayerTime');
+        nextPrayerDiv.textContent = `${nextPrayerName}`;
+        nextPrayerTimeDiv.textContent = `${nextPrayer}`;
+    } else {
+        // If there is no next prayer (i.e., all prayers have passed for the day)
+        nextPrayerDiv.textContent = "All prayers for today have passed.";
+    }
+}
+
+
+// Function to convert time to minutes for comparison
+function convertTimeToMinutes(time) {
+    var [hourString, minuteString, ampm] = time.split(/:| /);
+    var hour = parseInt(hourString);
+    var minute = parseInt(minuteString);
+    
+    // Convert hours to 24-hour format
+    if (ampm === 'PM' && hour < 12) {
+        hour += 12;
+    } else if (ampm === 'AM' && hour === 12) {
+        hour = 0;
+    }
+    
+    return hour * 60 + minute;
+}
+
+// Function to get the current time in HH:MM AM/PM format
+function getCurrentTime() {
+    var now = new Date();
+    var hours = now.getHours();
+    var minutes = now.getMinutes();
+    var ampm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12;
+    hours = hours ? hours : 12; // 12-hour format
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+    return hours + ':' + minutes + ' ' + ampm;
+}
+
+// Function to get user location
 async function getUserLocation() {
     const cachedLocation = getCachedUserLocation();
     if (cachedLocation) {
@@ -60,11 +144,13 @@ async function getUserLocation() {
     processUserLocation({ city, country });
 }
 
+// Function to cache user location
 function cacheUserLocation(city, country) {
     localStorage.setItem('userCity', city);
     localStorage.setItem('userCountry', country);
 }
 
+// Function to get cached user location
 function getCachedUserLocation() {
     const city = localStorage.getItem('userCity');
     const country = localStorage.getItem('userCountry');
@@ -75,6 +161,7 @@ function getCachedUserLocation() {
     return null;
 }
 
+// Function to process user location
 function processUserLocation({ city, country }) {
     userCity = city;
     userCountry = country;
@@ -87,35 +174,43 @@ function processUserLocation({ city, country }) {
     getPrayerTimes();
 }
 
+// Function to setup select box
 function setupSelectBox() {
-  var selectBox = document.getElementById("selectBox");
-
-  if (selectBox) { // Check if selectBox exists
-      selectBox.options[0].text = "Choose here";
-      selectBox.options[0].style.textAlign = "center"; 
-      selectBox.addEventListener("change", function() {
-          var selectedValue = selectBox.value;
-          var selectedMethod = selectBox.options[selectBox.selectedIndex].text;
-          localStorage.setItem("selectedValue", selectedValue);
-          localStorage.setItem("selectedMethod", selectedMethod);
-          window.selectedValue = selectedValue;
-          window.selectedMethod = selectedMethod;
-      });
+    var selectBox = document.getElementById("selectBox");
+  
+    if (selectBox) { // Check if selectBox exists
+        selectBox.options[0].text = "Method";
+        selectBox.options[0].style.textAlign = "center"; 
+        selectBox.addEventListener("change", function() {
+            var selectedValue = selectBox.value;
+            var selectedMethod = selectBox.options[selectBox.selectedIndex].text;
+            localStorage.setItem("selectedValue", selectedValue);
+            localStorage.setItem("selectedMethod", selectedMethod);
+            window.selectedValue = selectedValue;
+            window.selectedMethod = selectedMethod;
+  
+            // Refresh the page after selecting an option
+            location.reload();
+        });
+    }
+  
+    var storedValue = localStorage.getItem("selectedValue");
+    var storedMethod = localStorage.getItem("selectedMethod");
+  
+    if (storedValue !== null && storedMethod !== null) {
+        window.selectedValue = storedValue;
+        window.selectedMethod = storedMethod;
+        calcMethod.textContent = `Calculation Method: ${storedMethod}`;
+    } else {
+        window.selectedValue = 1;
+        window.selectedMethod = "Select a method";
+        calcMethod.textContent = `Select a calculation method`;
+    }
   }
+  
 
-  var storedValue = localStorage.getItem("selectedValue");
-  var storedMethod = localStorage.getItem("selectedMethod");
+document.addEventListener('DOMContentLoaded', function() {
+    // Get user location
+    getUserLocation();
+});
 
-  if (storedValue !== null && storedMethod !== null) {
-      window.selectedValue = storedValue;
-      window.selectedMethod = storedMethod;
-      calcMethod.textContent = `Calculation Method: ${storedMethod}`;
-  } else {
-      window.selectedValue = 1;
-      window.selectedMethod = "Select a method";
-      calcMethod.textContent = `Select a calculation method`;
-  }
-}
-
-
-getUserLocation();

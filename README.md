@@ -1,3 +1,5 @@
+[Download Here](https://chromewebstore.google.com/detail/salaat-prayer-times/abdmibnfefhnpmcjbekbdlmhfhajfdkb)
+
 A simple extension that displays daily prayer times for your city and country.
 Lets stay on top of our Salaat!
 
