@@ -1,32 +1,66 @@
-The goal of this chrome extension is to be able to quickly view Salaat times right from your browser.
+# Prayer Times - Salaat - Version History
 
-## V0.1
-Salat times for Edmonton, AB only.  
+---
 
-## V0.2
-Salat times for anywhere in Canada (note: cities with two words might encounter errors).  
+## V2.0
+- **Release Highlights**: New UI.
+- **Changes**: 
+  - Improved UI for better legibility
 
-## V0.3
-Salat times for anywhere in Canada (note: cities with two words might encounter errors), with calculation method selectable.  
-
-## V0.4
-UI and colour palette updates.  
-
-## V0.5
-Loading text added. 
-Option to Donate to support.  
-
-## V0.6
-Sunrise timing added.  
-Updated navbar icon.  
-Resolved "Throttled" issues with the geocode API.  
-
-## V0.6.1
-Fixed Error - App was stuck on loading.
-
-## V0.7
-Added AM / PM display rather than 24 hour
+---
 
 ## V1.0
-This version optimizes the extension for broswers such as Arc and Brave, where the settings page has been removed.
-There are also UI changes, improved speed and bug fixes.
+- **Release Highlights**: Optimized compatibility for browsers such as Arc and Brave.
+- **Changes**: 
+  - Removed settings page for simpler navigation.
+  - UI updates for a cleaner look.
+  - Improved speed and various bug fixes for better performance.
+
+---
+
+## V0.7
+- **Time Display Update**: Switched to AM/PM format from 24-hour format for ease of reading.
+
+---
+
+## V0.6.1
+- **Bug Fix**: Resolved issue causing the app to be stuck on loading.
+
+---
+
+## V0.6
+- **New Features**:
+  - Added Sunrise timing.
+  - Updated navbar icon for better visibility.
+- **Improvements**: Addressed “Throttled” issues with the geocode API, enhancing reliability.
+
+---
+
+## V0.5
+- **New Additions**:
+  - Loading text displayed while fetching data.
+  - Option added to donate and support further development.
+
+---
+
+## V0.4
+- **UI Update**: Refined user interface and updated color palette for improved aesthetics.
+
+---
+
+## V0.3
+- **Expanded Coverage**: Salat times now available for all cities in Canada, with selectable calculation methods.
+  - *Note*: Cities with two-word names may still encounter errors.
+
+---
+
+## V0.2
+- **Enhanced Coverage**: Salat times expanded to all locations in Canada.
+  - *Note*: Cities with two-word names may experience errors.
+
+---
+
+## V0.1
+- **Initial Release**: Displayed Salat times specifically for Edmonton, AB.
+
+---
