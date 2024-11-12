@@ -50,12 +50,12 @@ function populatePrayerTimes(timings) {
     sunrise = formatTime(timings.Sunrise);
 
     // Populate prayer times table
-    document.getElementById('fajr').textContent = fajr;
-    document.getElementById('sunrise').textContent = sunrise;
-    document.getElementById('dhuhr').textContent = dhuhr;
-    document.getElementById('asr').textContent = asr;
-    document.getElementById('maghrib').textContent =maghrib;
-    document.getElementById('isha').textContent = isha;
+    document.getElementById('fajr').textContent ="Fajr: " + fajr;
+    document.getElementById('sunrise').textContent ="Sunrise: " + sunrise;
+    document.getElementById('dhuhr').textContent ="Dhuhr: " + dhuhr;
+    document.getElementById('asr').textContent ="Asr: " + asr;
+    document.getElementById('maghrib').textContent ="Maghrib: " + maghrib;
+    document.getElementById('isha').textContent ="Isha: " + isha;
 }
 
 

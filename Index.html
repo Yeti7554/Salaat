@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prayer Times</title>
+    <link rel="icon" type="image/x-icon" href="./16.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans Arabic', sans-serif;
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 320px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            height: 6px;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1NiIgaGVpZ2h0PSIxMDAiPgo8cmVjdCB3aWR0aD0iNTYiIGhlaWdodD0iMTAwIiBmaWxsPSIjZjhmOWZhIj48L3JlY3Q+CjxwYXRoIGQ9Ik0yOCA2NkwwIDUwTDAgMTZMMjggMEw1NiAxNkw1NiA1MEwyOCA2NkwyOCAxMDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzEwYjk4MSIgc3Ryb2tlLXdpZHRoPSIyIj48L3BhdGg+CjxwYXRoIGQ9Ik0yOCAwTDI4IDM0TDAgNTBMMCA4NEwyOCAxMDBMNTYgODRMNTYgNTBMMjggMzQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzEwYjk4MSIgc3Ryb2tlLXdpZHRoPSIyIj48L3BhdGg+Cjwvc3ZnPg==');
+            opacity: 0.3;
+        }
+
+        .content {
+            padding: 16px;
+        }
+
+        h1 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #10b981;
+            text-align: center;
+            margin-bottom: 12px;
+        }
+
+        .location {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .my-city {
+            color: #10b981;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        #selectBox {
+            padding: 2px 4px;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            background-color: #ffffff;
+            color: #374151;
+            font-size: 12px;
+            max-width: 150px;
+        }
+
+        .current-time {
+            font-size: 12px;
+            color: #6b7280;
+            text-align: center;
+            margin-bottom: 12px;
+        }
+
+        .next-prayer {
+            background-color: #ecfdf5;
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 12px;
+        }
+
+        .up-next {
+            color: #10b981;
+            font-size: 12px;
+            margin-bottom: 2px;
+        }
+
+        .next-prayer-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nextPrayer {
+            font-size: 18px;
+            font-weight: 600;
+            color: #047857;
+        }
+
+        .nextPrayerTime {
+            font-size: 16px;
+            color: #10b981;
+        }
+
+        .prayer-times {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .prayer-time {
+            background-color: #f3f4f6;
+            border-radius: 6px;
+            padding: 8px;
+            text-align: center;
+        }
+
+        .prayer-name {
+            font-size: 12px;
+            color: #374151;
+            margin-bottom: 2px;
+        }
+
+        .prayer-time div:last-child {
+            font-size: 12px;
+            color: #6b7280;
+        }
+
+        .calc-text {
+            font-size: 10px;
+            color: #9ca3af;
+            text-align: right;
+            margin-bottom: 8px;
+            font-style: italic;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #e5e7eb;
+            padding-top: 12px;
+        }
+
+        .version {
+            font-size: 10px;
+            color: #9ca3af;
+        }
+
+        .version a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .footer-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .donate-button {
+            background-color: #10b981;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            padding: 6px 12px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .donate-button:hover {
+            background-color: #059669;
+        }
+
+        .donate {
+            color: #ffffff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header"></div>
+        <div class="content">
+            <h1>Prayer Times</h1>
+            <div class="location">
+                <h2 class="my-city">Loading...</h2>
+                <select id="selectBox">
+                    <option value=""></option>
+                    <option value="0">Shia Ithna-Ashari</option>
+                    <option value="1">University of Islamic Sciences, Karachi</option>
+                    <option value="2">Islamic Society of North America</option>
+                    <option value="3">Muslim World League</option>
+                    <option value="4">Umm Al-Qura University, Makkah</option>
+                    <option value="5">Egyptian General Authority of Survey</option>
+                    <option value="7">Institute of Geophysics, University of Tehran</option>
+                </select>
+            </div>
+            <div class="current-time"></div>
+            <div class="next-prayer">
+                <div class="up-next">Up Next</div>
+                <div class="next-prayer-info">
+                    <span class="nextPrayer"></span>
+                    <span class="nextPrayerTime"></span>
+                </div>
+            </div>
+            <div class="prayer-times">
+                <div class="prayer-time">
+                    <div class="prayer-name">Fajr</div>
+                    <div id="fajr"></div>
+                </div>
+                <div class="prayer-time">
+                    <div class="prayer-name">Dhuhr</div>
+                    <div id="dhuhr"></div>
+                </div>
+                <div class="prayer-time">
+                    <div class="prayer-name">Asr</div>
+                    <div id="asr"></div>
+                </div>
+                <div class="prayer-time">
+                    <div class="prayer-name">Maghrib</div>
+                    <div id="maghrib"></div>
+                </div>
+                <div class="prayer-time">
+                    <div class="prayer-name">Isha</div>
+                    <div id="isha"></div>
+                </div>
+                <div class="prayer-time">
+                    <div class="prayer-name">Sunrise</div>
+                    <div id="sunrise"></div>
+                </div>
+            </div>
+            <div class="calc-text">Loading...</div>
+            <div class="footer">
+                <h3 class="version"><a href="https://github.com/Yeti7554/Salaat/blob/main/VERSION-HISTORY.md" class="link" target="_blank">ver 1.0</a></h3>
+                <div class="footer-right">
+                    <button class="donate-button">
+                        <a href="https://www.paypal.com/donate/?business=WMLWTF99YRSEE&no_recurring=0&item_name=Donate+to+support+development+of+the+%22Salaat+-+Prayer+Times%22+Google+Chrome+extension.+&currency_code=CAD" target="_blank" class="donate">Support</a>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>

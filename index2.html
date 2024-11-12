@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Prayer Times - Salaat</title>
+  <meta content="Prayer times for your location generated automatically, with your preferred calculation method.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/x-icon" href="./16.png">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0VMBXJKHHD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-0VMBXJKHHD');
+  </script>
+</head>
+<body>
+  <h1>Prayer Times</h1>
+  <h2 class="my-city"> Loading ...</h1>
+  <div class="current-time"></div>
+  <div class="up-next">Up Next</div>
+  <div class="nextPrayer"></div>
+  <div class="nextPrayerTime"></div>
+  <table class="table-centre">
+    <tr>
+      <td id="fajr"></td>
+      <td id="dhuhr"></td>
+    </tr>
+    <tr>
+      <td id="asr"></td>
+      <td id="maghrib"></td>
+    </tr>
+    <tr>
+      <td id="isha"></td>
+      <td id="sunrise"></td>
+    </tr>
+  </table>
+  <h3 class="calc-text"> Loading ... </h3>
+  <div class="footer">
+		<h3 class="version"> <a href="https://github.com/Yeti7554/Salaat/blob/main/VERSION-HISTORY.md" class="link" target="_blank">ver 1.0</a> </h3>
+		<div class="footer-right">
+      <select id="selectBox">
+        <option value=""></option>
+        <option value="0">Shia Ithna-Ashari</option>
+        <option value="1">University of Islamic Sciences, Karachi</option>
+        <option value="2">Islamic Society of North America</option>
+        <option value="3">Muslim World League</option>
+        <option value="4">Umm Al-Qura University, Makkah</option>
+        <option value="5">Egyptian General Authority of Survey</option>
+        <option value="7">Institute of Geophysics, University of Tehran</option>
+    </select>
+    <button class="donate-button"><a href="https://www.paypal.com/donate/?business=WMLWTF99YRSEE&no_recurring=0&item_name=Donate+to+support+development+of+the+%22Salaat+-+Prayer+Times%22+Google+Chrome+extension.+&currency_code=CAD" target="_blank" class="donate"> Donate</a></button>
+    </div>
+    </div>
+	</div>
+
+  <script src="./script.js"></script>
+
+</body>
+</html>

@@ -26,3 +26,7 @@ Fixed Error - App was stuck on loading.
 
 ## V0.7
 Added AM / PM display rather than 24 hour
+
+## V1.0
+This version optimizes the extension for broswers such as Arc and Brave, where the settings page has been removed.
+There are also UI changes, improved speed and bug fixes.
